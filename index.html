@@ -72,7 +72,40 @@
       font-feature-settings: "cv02", "cv03", "cv04", "cv11";
       letter-spacing: -0.011em;
     }
+
+    /* Print / PDF Styles */
+    @media print {
+      body {
+        background-color: #ffffff !important;
+        color: #09090b !important;
+      }
+      header, footer, #navTabs, #themeToggle, .no-print, button, #toast, section {
+        display: none !important;
+      }
+      main {
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      .tab-content {
+        display: none !important;
+      }
+      #tab-homework {
+        display: block !important;
+      }
+      #homework-worksheet {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        background: #ffffff !important;
+        color: #09090b !important;
+      }
+    }
   </style>
+
+  <!-- html2pdf.js for client-side PDF export -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 
 <body class="bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 min-h-full flex flex-col antialiased transition-colors duration-200">
@@ -473,111 +506,320 @@
     <!-- ============================================================ -->
     <div id="tab-homework" class="tab-content hidden space-y-6">
       
-      <div class="bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200/80 dark:border-zinc-800 shadow-card p-5 sm:p-6 space-y-6">
+      <!-- Top Action Bar (Download & Protocol) -->
+      <div class="bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200/80 dark:border-zinc-800 shadow-card p-5 sm:p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 border border-zinc-200 dark:border-zinc-700">
+              HW-01 Active Worksheet
+            </span>
+            <span class="text-xs text-zinc-400">•</span>
+            <span class="text-xs text-zinc-500 dark:text-zinc-400">Pre-Filled Exemplar Preview</span>
+          </div>
+          <h2 class="text-base sm:text-lg font-semibold text-zinc-900 dark:text-zinc-100 mt-1">
+            Diplomatic Workplace Communication & Email Rewriting
+          </h2>
+          <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5 max-w-xl">
+            This worksheet is pre-filled so you can review the expected standard and download the formatted PDF to submit via Preply chat.
+          </p>
+        </div>
+
+        <!-- Download & Print Buttons -->
+        <div class="flex items-center gap-2.5 flex-wrap sm:flex-nowrap">
+          <button id="btnDownloadPDF" onclick="downloadHomeworkPDF()" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-semibold bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-200 transition shadow-subtle">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+            <span>Download Homework PDF</span>
+          </button>
+          
+          <button onclick="window.print()" class="inline-flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-medium border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-700 transition">
+            <svg class="w-4 h-4 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+            <span>Print / Save PDF</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Printable Worksheet Container (Rendered on Page & Captured by html2pdf) -->
+      <div id="homework-worksheet" class="bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200/80 dark:border-zinc-800 shadow-card p-6 sm:p-8 space-y-8">
         
-        <!-- Assignment Header -->
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-zinc-200 dark:border-zinc-800">
+        <!-- Worksheet Document Header -->
+        <div class="border-b border-zinc-200 dark:border-zinc-800 pb-5 space-y-3">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div class="flex items-center gap-2">
+              <span class="text-[11px] font-mono font-bold tracking-wider uppercase px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 border border-zinc-200 dark:border-zinc-700">
+                PREPLY ENTERPRISE • HW-01
+              </span>
+              <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60 font-medium">
+                ✓ Model Answer Sheet (Exemplar)
+              </span>
+            </div>
+            <span class="text-xs text-zinc-400 font-mono">Module: Workplace Communication</span>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs pt-1">
+            <div class="p-2.5 rounded-lg bg-zinc-50 dark:bg-zinc-800/50 border border-zinc-200/60 dark:border-zinc-700/60">
+              <span class="text-zinc-400 text-[11px] block">Student</span>
+              <span class="font-semibold text-zinc-900 dark:text-zinc-100">V. T.</span>
+            </div>
+            <div class="p-2.5 rounded-lg bg-zinc-50 dark:bg-zinc-800/50 border border-zinc-200/60 dark:border-zinc-700/60">
+              <span class="text-zinc-400 text-[11px] block">Role</span>
+              <span class="font-semibold text-zinc-900 dark:text-zinc-100">Data Analyst (IT)</span>
+            </div>
+            <div class="p-2.5 rounded-lg bg-zinc-50 dark:bg-zinc-800/50 border border-zinc-200/60 dark:border-zinc-700/60">
+              <span class="text-zinc-400 text-[11px] block">Instructor</span>
+              <span class="font-semibold text-zinc-900 dark:text-zinc-100">Lewis O.</span>
+            </div>
+            <div class="p-2.5 rounded-lg bg-zinc-50 dark:bg-zinc-800/50 border border-zinc-200/60 dark:border-zinc-700/60">
+              <span class="text-zinc-400 text-[11px] block">Submission</span>
+              <span class="font-semibold text-emerald-600 dark:text-emerald-400">Preply Classroom</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- PART 1: MULTIPLE CHOICE EXERCISE -->
+        <div class="space-y-6">
           <div>
             <div class="flex items-center gap-2">
-              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 border border-zinc-200 dark:border-zinc-700">
-                Assignment 1
-              </span>
-              <span class="text-xs text-zinc-400">•</span>
-              <span class="text-xs text-zinc-500 dark:text-zinc-400">Due before Session 02</span>
+              <span class="h-5 w-5 rounded-full bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 text-xs font-bold flex items-center justify-center">1</span>
+              <h3 class="text-sm sm:text-base font-semibold text-zinc-900 dark:text-zinc-100">
+                Part 1: Multiple Choice — Diplomatic & Indirect Workplace Phrasing
+              </h3>
             </div>
-            <h2 class="text-base font-semibold text-zinc-900 dark:text-zinc-100 mt-1">
-              The 90-Second Executive Voice Pitch
-            </h2>
+            <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1 pl-7">
+              Identify which email response maintains executive diplomacy and avoids abrupt, overly direct Slavic L1 language transfer.
+            </p>
           </div>
-          <div class="text-xs text-zinc-400 font-mono">
-            Est. Time: 15–20 Mins
+
+          <!-- Question 1 -->
+          <div class="pl-0 sm:pl-7 space-y-3">
+            <div class="p-3.5 rounded-lg bg-zinc-50 dark:bg-zinc-800/40 border border-zinc-200 dark:border-zinc-800 text-xs text-zinc-700 dark:text-zinc-300">
+              <span class="font-semibold text-zinc-900 dark:text-zinc-100">Scenario A:</span> You must inform a Product Manager that the weekly cohort retention dashboard will be delayed by 2 days because the staging data pipeline crashed this morning.
+              <div class="mt-1 text-zinc-500 dark:text-zinc-400 font-medium">Which email sounds most professional, indirect, and proactive?</div>
+            </div>
+
+            <div class="space-y-2 text-xs">
+              <!-- Option A -->
+              <div class="p-3 rounded-lg border border-zinc-200 dark:border-zinc-800 opacity-70">
+                <div class="flex items-center justify-between font-mono text-[11px] text-zinc-500 mb-1">
+                  <span>Option A</span>
+                  <span class="text-amber-600 dark:text-amber-400">Too Direct / Abrupt</span>
+                </div>
+                <p class="text-zinc-600 dark:text-zinc-400">
+                  "The dashboard is not ready. The pipeline failed today. I will fix it on Wednesday."
+                </p>
+              </div>
+
+              <!-- Option B (Selected / Filled In) -->
+              <div class="p-3.5 rounded-lg border-2 border-emerald-500/80 bg-emerald-50/40 dark:bg-emerald-950/20 relative">
+                <div class="flex items-center justify-between font-mono text-[11px] mb-1">
+                  <span class="font-bold text-emerald-800 dark:text-emerald-300 flex items-center gap-1.5">
+                    <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    Option B (Selected Exemplar)
+                  </span>
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500 text-white">✓ Best Choice</span>
+                </div>
+                <p class="text-zinc-900 dark:text-zinc-100 font-medium leading-relaxed">
+                  "Hi Sarah, quick update regarding the cohort dashboard: we encountered an unexpected pipeline latency on the staging cluster this morning. To ensure complete data accuracy, I'm re-running our validation scripts and expect to have the finalized numbers over to you by Wednesday afternoon. Appreciate your flexibility on this!"
+                </p>
+                <div class="mt-2.5 pt-2 border-t border-emerald-200 dark:border-emerald-800/60 text-[11px] text-emerald-800 dark:text-emerald-300">
+                  <strong>Why this works:</strong> Uses softening openers (*"quick update"*), shifts focus from failure to quality assurance (*"to ensure complete data accuracy"*), provides a firm revised ETA, and closes with positive appreciation.
+                </div>
+              </div>
+
+              <!-- Option C -->
+              <div class="p-3 rounded-lg border border-zinc-200 dark:border-zinc-800 opacity-70">
+                <div class="flex items-center justify-between font-mono text-[11px] text-zinc-500 mb-1">
+                  <span>Option C</span>
+                  <span class="text-red-500">Defensive / Hostile</span>
+                </div>
+                <p class="text-zinc-600 dark:text-zinc-400">
+                  "Why do you need this so quickly? The staging database crashed so no one can do anything until Wednesday."
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Question 2 -->
+          <div class="pl-0 sm:pl-7 space-y-3 pt-2">
+            <div class="p-3.5 rounded-lg bg-zinc-50 dark:bg-zinc-800/40 border border-zinc-200 dark:border-zinc-800 text-xs text-zinc-700 dark:text-zinc-300">
+              <span class="font-semibold text-zinc-900 dark:text-zinc-100">Scenario B:</span> An ad-hoc request arrives from a Marketing stakeholder asking for a custom SQL report immediately, but your team sprint is fully allocated to a critical migration.
+              <div class="mt-1 text-zinc-500 dark:text-zinc-400 font-medium">Which email pushes back diplomatically without friction?</div>
+            </div>
+
+            <div class="space-y-2 text-xs">
+              <!-- Option A -->
+              <div class="p-3 rounded-lg border border-zinc-200 dark:border-zinc-800 opacity-70">
+                <div class="flex items-center justify-between font-mono text-[11px] text-zinc-500 mb-1">
+                  <span>Option A</span>
+                  <span class="text-amber-600 dark:text-amber-400">Flat Refusal</span>
+                </div>
+                <p class="text-zinc-600 dark:text-zinc-400">
+                  "I cannot write this query now. We are busy with Sprint 4."
+                </p>
+              </div>
+
+              <!-- Option B (Selected / Filled In) -->
+              <div class="p-3.5 rounded-lg border-2 border-emerald-500/80 bg-emerald-50/40 dark:bg-emerald-950/20 relative">
+                <div class="flex items-center justify-between font-mono text-[11px] mb-1">
+                  <span class="font-bold text-emerald-800 dark:text-emerald-300 flex items-center gap-1.5">
+                    <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    Option B (Selected Exemplar)
+                  </span>
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500 text-white">✓ Best Choice</span>
+                </div>
+                <p class="text-zinc-900 dark:text-zinc-100 font-medium leading-relaxed">
+                  "Thanks for flagging this priority, Alex. Given our current sprint commitments on the core data warehouse migration, I won't have the bandwidth to turn this around today. Would Thursday morning work for you, or should we connect with Maria to discuss reprioritizing the backlog?"
+                </p>
+                <div class="mt-2.5 pt-2 border-t border-emerald-200 dark:border-emerald-800/60 text-[11px] text-emerald-800 dark:text-emerald-300">
+                  <strong>Why this works:</strong> Validates their request (*"Thanks for flagging"*), explains the constraint without sounding unhelpful, and offers two collaborative alternatives (a realistic timeline or managerial reprioritization).
+                </div>
+              </div>
+
+              <!-- Option C -->
+              <div class="p-3 rounded-lg border border-zinc-200 dark:border-zinc-800 opacity-70">
+                <div class="flex items-center justify-between font-mono text-[11px] text-zinc-500 mb-1">
+                  <span>Option C</span>
+                  <span class="text-red-500">Bureaucratic Brush-Off</span>
+                </div>
+                <p class="text-zinc-600 dark:text-zinc-400">
+                  "Please submit a ticket in Jira and wait until next sprint grooming."
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Step 1: Scenario -->
-        <div class="space-y-2">
-          <h3 class="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 flex items-center gap-2">
-            <span class="h-4 w-4 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 text-[10px] font-bold flex items-center justify-center border border-zinc-300 dark:border-zinc-700">1</span>
-            Workplace Scenario
-          </h3>
-          <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
-            You are participating in a weekly product sync with your Product Manager and Engineering Lead. You need to brief them on an unexpected dip in mobile conversion:
-          </p>
+        <!-- PART 2: EMAIL REWRITE EXERCISE -->
+        <div class="space-y-6 pt-4 border-t border-zinc-200 dark:border-zinc-800">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="h-5 w-5 rounded-full bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 text-xs font-bold flex items-center justify-center">2</span>
+              <h3 class="text-sm sm:text-base font-semibold text-zinc-900 dark:text-zinc-100">
+                Part 2: Email Tone Transformation & Rewrite
+              </h3>
+            </div>
+            <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1 pl-7">
+              Transforming accusatory, blunt technical messages into diplomatic, executive-ready communication.
+            </p>
+          </div>
 
-          <div class="p-4 rounded-lg bg-zinc-50 dark:bg-zinc-800/40 border border-zinc-200 dark:border-zinc-800 text-xs font-mono space-y-1 text-zinc-700 dark:text-zinc-300">
-            <div><strong>Metric:</strong> Mobile onboarding completion dropped from 74% to 61% over the past 7 days.</div>
-            <div><strong>Root Cause:</strong> High latency in the SMS two-factor verification endpoint.</div>
-            <div><strong>Recommendation:</strong> Enable WhatsApp fallback authentication or increase the gateway timeout.</div>
+          <div class="pl-0 sm:pl-7 space-y-4">
+            
+            <!-- Context -->
+            <div class="p-3.5 rounded-lg bg-zinc-50 dark:bg-zinc-800/40 border border-zinc-200 dark:border-zinc-800 text-xs text-zinc-700 dark:text-zinc-300">
+              <span class="font-semibold text-zinc-900 dark:text-zinc-100">Scenario Prompt:</span> The backend engineering team deployed an unannounced schema change on staging, altering <code class="font-mono bg-zinc-200 dark:bg-zinc-700 px-1 py-0.5 rounded">user_id</code> from integer to string. This broke your automated analytics ingestion scripts.
+            </div>
+
+            <!-- Original Unpolished Draft -->
+            <div class="space-y-1.5">
+              <span class="text-xs font-mono font-medium text-red-500 flex items-center gap-1.5">
+                <span>✕ Original Unpolished Draft (Do NOT send):</span>
+              </span>
+              <div class="p-4 rounded-lg border border-red-200 dark:border-red-900/40 bg-red-50/30 dark:bg-red-950/10 font-mono text-xs text-zinc-700 dark:text-zinc-300 space-y-1">
+                <div><strong>To:</strong> backend-eng@company.com</div>
+                <div><strong>Subject:</strong> Wrong data</div>
+                <div class="pt-2 text-zinc-800 dark:text-zinc-200">
+                  The backend team sent wrong schemas. Our ETL is broken now. Change the user_id back to integer immediately because my scripts are failing.
+                </div>
+              </div>
+            </div>
+
+            <!-- Completed Student Rewrite (Exemplar Preview) -->
+            <div class="space-y-1.5">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-medium text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
+                  <span>✓ Student Model Rewrite (Filled-In Exemplar):</span>
+                </span>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 font-bold">Grade: 10 / 10</span>
+              </div>
+              <div class="p-4 rounded-lg border-2 border-emerald-500/70 bg-white dark:bg-zinc-900 font-mono text-xs text-zinc-800 dark:text-zinc-200 space-y-2">
+                <div><strong>To:</strong> backend-eng@company.com</div>
+                <div><strong>Subject:</strong> <span class="text-zinc-900 dark:text-zinc-100 font-semibold">Action Required: Schema adjustment for user_id field in staging ETL pipeline</span></div>
+                <div class="pt-2 space-y-2 font-sans text-xs leading-relaxed text-zinc-700 dark:text-zinc-300">
+                  <p>Hi Team,</p>
+                  <p>Hope you're having a productive week.</p>
+                  <p>Following the recent staging deployment, we noticed an unexpected schema discrepancy where <code class="font-mono text-[11px] bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 rounded">user_id</code> was migrated to string format. This has temporarily interrupted our downstream ETL ingestion jobs.</p>
+                  <p>Could we coordinate a quick sync or look into reverting this field to integer in the staging environment? Alternatively, if this is an intentional breaking change, please let us know so we can update our parsing logic accordingly.</p>
+                  <p>Thanks for the quick support on this!</p>
+                  <p class="pt-1">Best regards,<br><strong class="text-zinc-900 dark:text-zinc-100">V. T.</strong> | Data Analytics</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tutor Feedback Annotation -->
+            <div class="p-4 rounded-lg bg-zinc-50 dark:bg-zinc-800/40 border border-zinc-200 dark:border-zinc-800 text-xs space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="font-semibold text-zinc-900 dark:text-zinc-100 flex items-center gap-1.5">
+                  <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                  Tutor Assessment & Rubric Breakdown (Lewis O.)
+                </span>
+                <span class="text-[11px] font-mono text-zinc-400">Evaluation: Executive Ready</span>
+              </div>
+              <ul class="space-y-1 text-zinc-600 dark:text-zinc-400 pl-5 list-disc text-[11px] leading-relaxed">
+                <li><strong class="text-zinc-800 dark:text-zinc-200">Tone Management:</strong> Replaced blame (*"you sent wrong schemas"*) with objective observation (*"we noticed an unexpected schema discrepancy"*).</li>
+                <li><strong class="text-zinc-800 dark:text-zinc-200">Constructive Alternatives:</strong> Offered two sensible outcomes (reverting field or confirming intentional update so data team can adapt).</li>
+                <li><strong class="text-zinc-800 dark:text-zinc-200">Cross-Team Relationship:</strong> Keeps communication collaborative, which is essential when working with international engineering teams.</li>
+              </ul>
+            </div>
+
           </div>
         </div>
 
-        <!-- Step 2: Task Instructions -->
-        <div class="space-y-2">
-          <h3 class="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 flex items-center gap-2">
-            <span class="h-4 w-4 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 text-[10px] font-bold flex items-center justify-center border border-zinc-300 dark:border-zinc-700">2</span>
-            Submission Protocol
-          </h3>
-          <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
-            Record a <strong>60 to 90-second voice note</strong> on Preply or Telegram. Structure your response using the 3-step formula:
-          </p>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 pt-1 text-xs">
-            <div class="p-3 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
-              <span class="font-semibold text-zinc-900 dark:text-zinc-100 block mb-1">What (The Data)</span>
-              <span class="text-zinc-500 dark:text-zinc-400">State the 13% drop concisely without conversational rambling.</span>
+        <!-- PART 3: SPOKEN EXERCISE & SUBMISSION INSTRUCTIONS -->
+        <div class="space-y-6 pt-4 border-t border-zinc-200 dark:border-zinc-800">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="h-5 w-5 rounded-full bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 text-xs font-bold flex items-center justify-center">3</span>
+              <h3 class="text-sm sm:text-base font-semibold text-zinc-900 dark:text-zinc-100">
+                Part 3: 90-Second Executive Voice Pitch (Oral Component)
+              </h3>
             </div>
-            <div class="p-3 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
-              <span class="font-semibold text-zinc-900 dark:text-zinc-100 block mb-1">So What (The Impact)</span>
-              <span class="text-zinc-500 dark:text-zinc-400">Explain the commercial risk to active user growth and activation.</span>
-            </div>
-            <div class="p-3 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
-              <span class="font-semibold text-zinc-900 dark:text-zinc-100 block mb-1">Now What (The Action)</span>
-              <span class="text-zinc-500 dark:text-zinc-400">Propose the mitigation using advisory verbs (*"I recommend prioritizing..."*).</span>
-            </div>
+            <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1 pl-7">
+              Record a 60–90 second voice memo simulating a live metric presentation to your Product Manager.
+            </p>
           </div>
-        </div>
 
-        <!-- Step 3: Interactive Checklist -->
-        <div class="space-y-3 pt-2">
-          <h3 class="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 flex items-center gap-2">
-            <span class="h-4 w-4 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 text-[10px] font-bold flex items-center justify-center border border-zinc-300 dark:border-zinc-700">3</span>
-            Pre-Flight Pronunciation Checklist
-          </h3>
-          <div class="space-y-2 text-xs">
-            <label class="flex items-start gap-3 p-3 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800/30 cursor-pointer transition">
-              <input type="checkbox" class="mt-0.5 rounded border-zinc-300 text-zinc-900 focus:ring-zinc-900">
-              <span class="text-zinc-700 dark:text-zinc-300">
-                Did I place stress on the correct syllables for <strong class="font-mono text-zinc-900 dark:text-zinc-100">AN-a-lyze</strong> (verb) vs. <strong class="font-mono text-zinc-900 dark:text-zinc-100">a-NAL-y-sis</strong> (noun)?
-              </span>
-            </label>
-
-            <label class="flex items-start gap-3 p-3 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800/30 cursor-pointer transition">
-              <input type="checkbox" class="mt-0.5 rounded border-zinc-300 text-zinc-900 focus:ring-zinc-900">
-              <span class="text-zinc-700 dark:text-zinc-300">
-                Did I keep my lips rounded for <strong class="font-mono text-zinc-900 dark:text-zinc-100">"we observed"</strong> without teeth-to-lip contact?
-              </span>
-            </label>
-
-            <label class="flex items-start gap-3 p-3 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800/30 cursor-pointer transition">
-              <input type="checkbox" class="mt-0.5 rounded border-zinc-300 text-zinc-900 focus:ring-zinc-900">
-              <span class="text-zinc-700 dark:text-zinc-300">
-                Did I introduce the data using a natural opening anchor instead of filler hesitation?
-              </span>
-            </label>
-          </div>
-        </div>
-
-        <!-- Tutor Review Guarantee -->
-        <div class="p-4 rounded-lg bg-zinc-50 dark:bg-zinc-800/40 border border-zinc-200 dark:border-zinc-800 flex items-center justify-between text-xs">
-          <div class="flex items-center gap-3">
-            <div class="h-7 w-7 rounded-md bg-zinc-200 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 flex items-center justify-center font-bold">
-              ✓
+          <div class="pl-0 sm:pl-7 space-y-4">
+            
+            <div class="p-3.5 rounded-lg bg-zinc-50 dark:bg-zinc-800/40 border border-zinc-200 dark:border-zinc-800 text-xs font-mono space-y-1 text-zinc-700 dark:text-zinc-300">
+              <div><strong>Metric Insight:</strong> Mobile onboarding completion dropped from 74% to 61% over the past 7 days.</div>
+              <div><strong>Root Cause:</strong> High latency in the SMS two-factor verification endpoint.</div>
+              <div><strong>Recommendation:</strong> Implement WhatsApp fallback verification or increase API gateway timeout.</div>
             </div>
-            <div>
-              <div class="font-medium text-zinc-900 dark:text-zinc-100">Tutor Feedback SLA</div>
-              <div class="text-zinc-500 dark:text-zinc-400 text-[11px]">Audio notes receive timestamped corrections within 24 hours.</div>
+
+            <!-- Self-Audit Checklist -->
+            <div class="space-y-2 text-xs">
+              <span class="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Pre-Submission Pronunciation Checklist:</span>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1">
+                <div class="p-2.5 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
+                  <span class="text-emerald-600 dark:text-emerald-400 font-bold block mb-1">Check 1: Stress</span>
+                  <span class="text-zinc-600 dark:text-zinc-400 text-[11px]">Placed stress on <strong class="font-mono text-zinc-800 dark:text-zinc-200">AN-a-lyze</strong> (v) and <strong class="font-mono text-zinc-800 dark:text-zinc-200">a-NAL-y-sis</strong> (n).</span>
+                </div>
+                <div class="p-2.5 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
+                  <span class="text-emerald-600 dark:text-emerald-400 font-bold block mb-1">Check 2: /w/ Phonetics</span>
+                  <span class="text-zinc-600 dark:text-zinc-400 text-[11px]">Rounded lips for <strong class="font-mono text-zinc-800 dark:text-zinc-200">"we observed"</strong> without teeth-lip contact.</span>
+                </div>
+                <div class="p-2.5 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
+                  <span class="text-emerald-600 dark:text-emerald-400 font-bold block mb-1">Check 3: Structure</span>
+                  <span class="text-zinc-600 dark:text-zinc-400 text-[11px]">Followed strict 3-step formula: <strong class="text-zinc-800 dark:text-zinc-200">What &rarr; So What &rarr; Now What</strong>.</span>
+                </div>
+              </div>
             </div>
+
+            <!-- Submission SLA -->
+            <div class="p-4 rounded-lg bg-zinc-50 dark:bg-zinc-800/40 border border-zinc-200 dark:border-zinc-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
+              <div class="flex items-center gap-3">
+                <div class="h-8 w-8 rounded-md bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 flex items-center justify-center font-bold">
+                  ✓
+                </div>
+                <div>
+                  <div class="font-medium text-zinc-900 dark:text-zinc-100">How to Submit to Lewis</div>
+                  <div class="text-zinc-500 dark:text-zinc-400 text-[11px]">Send the completed PDF or voice note directly in the Preply Classroom chat. Feedback returned within 24 hours.</div>
+                </div>
+              </div>
+              <span class="font-mono text-zinc-500 text-xs whitespace-nowrap">Feedback SLA &lt; 24h</span>
+            </div>
+
           </div>
-          <span class="font-mono text-zinc-500 text-[11px]">&lt; 24h</span>
         </div>
 
       </div>
@@ -903,6 +1145,18 @@
       }
     }
 
+    // Toast Notification Helper
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const textSpan = toast.querySelector('span');
+      if (textSpan && message) textSpan.innerText = message;
+      toast.classList.remove('translate-y-16', 'opacity-0');
+
+      setTimeout(() => {
+        toast.classList.add('translate-y-16', 'opacity-0');
+      }, 2200);
+    }
+
     // Copy to Clipboard with Toast
     function copyPhrase(btn, text) {
       navigator.clipboard.writeText(text).then(() => {
@@ -910,15 +1164,74 @@
         btn.innerText = 'Copied';
         btn.classList.add('bg-zinc-900', 'text-white', 'dark:bg-zinc-100', 'dark:text-zinc-900');
 
-        const toast = document.getElementById('toast');
-        toast.classList.remove('translate-y-16', 'opacity-0');
+        showToast('Copied to clipboard');
 
         setTimeout(() => {
           btn.innerText = originalText;
           btn.classList.remove('bg-zinc-900', 'text-white', 'dark:bg-zinc-100', 'dark:text-zinc-900');
-          toast.classList.add('translate-y-16', 'opacity-0');
         }, 1800);
       });
+    }
+
+    // Client-Side PDF Generation & Download
+    function downloadHomeworkPDF() {
+      const btn = document.getElementById('btnDownloadPDF');
+      const originalHTML = btn.innerHTML;
+      btn.innerHTML = `
+        <svg class="animate-spin -ml-0.5 mr-1.5 h-3.5 w-3.5 text-current inline" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        <span>Generating PDF...</span>
+      `;
+      btn.disabled = true;
+
+      const element = document.getElementById('homework-worksheet');
+      if (!element) {
+        btn.innerHTML = originalHTML;
+        btn.disabled = false;
+        window.print();
+        return;
+      }
+
+      // Temporarily render in clean light mode for crisp PDF contrast
+      const wasDark = document.documentElement.classList.contains('dark');
+      if (wasDark) {
+        document.documentElement.classList.remove('dark');
+      }
+
+      const opt = {
+        margin: [8, 8, 8, 8],
+        filename: 'VT_Homework_01_Workplace_Communication.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { 
+          scale: 2, 
+          useCORS: true, 
+          backgroundColor: '#ffffff',
+          logging: false 
+        },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+      };
+
+      if (typeof html2pdf !== 'undefined') {
+        html2pdf().set(opt).from(element).save().then(() => {
+          if (wasDark) document.documentElement.classList.add('dark');
+          btn.innerHTML = originalHTML;
+          btn.disabled = false;
+          showToast('Homework PDF downloaded successfully!');
+        }).catch(err => {
+          console.error('PDF error, falling back to print:', err);
+          if (wasDark) document.documentElement.classList.add('dark');
+          btn.innerHTML = originalHTML;
+          btn.disabled = false;
+          window.print();
+        });
+      } else {
+        if (wasDark) document.documentElement.classList.add('dark');
+        btn.innerHTML = originalHTML;
+        btn.disabled = false;
+        window.print();
+      }
     }
 
     // Filter phrases

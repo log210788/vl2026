@@ -32,9 +32,10 @@ To publish this portal live on the web for V. T.:
   - Pronunciation gym with syllable stress guides (`AN-a-lyze` vs `a-NAL-y-sis` vs `an-a-LYT-i-cal`).
   - Grammar & Slavic L1 Polish (e.g. articles with technical nouns, future intent phrasing).
 - **Example Homework & Assignments:**
-  - Practical 90-second executive voice pitch simulation (What &rarr; So What &rarr; Now What).
-  - Self-audit pronunciation checklist.
-  - Tutor feedback turnaround guarantee (< 24h).
+  - **1-Click PDF Download & Print:** Built-in PDF export (`html2pdf`) and print engine for easy submission via Preply chat.
+  - **Multiple Choice Exercise:** Comparing direct/blunt options against indirect, diplomatic email phrasing with annotated rationale.
+  - **Email Rewrite Exercise (Pre-Filled Exemplar):** Transforming raw, accusatory bug reports into constructive, executive-level technical communication with tutor grading (10/10) and rubric annotations.
+  - **Spoken Practice:** 90-second executive voice pitch simulation (What &rarr; So What &rarr; Now What) with pronunciation checklist.
 - **3-Month Curriculum Roadmap:**
   - **Phase 1 (Month 1):** Workplace Fluency & Executive Data Pitching.
   - **Phase 2 (Month 2):** Tech Behavioral Interview Prep (STAR Method).
