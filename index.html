@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vlad | English for Data & Tech Careers - Student Portal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+            },
+            tech: {
+              50: '#f8fafc',
+              100: '#f1f5f9',
+              800: '#1e293b',
+              900: '#0f172a',
+              950: '#020617'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .glass {
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .badge-glow {
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.25);
+    }
+    .tab-btn.active {
+      background-color: #10b981;
+      color: #ffffff;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col selection:bg-emerald-500 selection:text-white">
+
+  <!-- Top Notification / Status Bar -->
+  <div class="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 px-4 py-2 text-xs font-medium text-white flex items-center justify-between shadow-md">
+    <div class="container mx-auto flex items-center justify-between">
+      <div class="flex items-center space-x-2">
+        <span class="flex h-2 w-2 relative">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+        </span>
+        <span>Corporate Sponsored Learning Portal • Track: English for Tech & Data Analytics</span>
+      </div>
+      <div class="hidden sm:flex items-center space-x-4">
+        <span>Tutor: <strong class="underline decoration-emerald-300">Lewis O.</strong></span>
+        <span>•</span>
+        <span>Target: <strong>English-Speaking Tech Companies</strong></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="border-b border-slate-800/80 bg-slate-900/70 sticky top-0 z-40 backdrop-blur-md">
+    <div class="container mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-700 flex items-center justify-center font-bold text-lg text-white shadow-lg shadow-emerald-900/30">
+          V
+        </div>
+        <div>
+          <h1 class="text-lg font-bold tracking-tight text-white flex items-center gap-2">
+            Vlad Tikhonov
+            <span class="text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+              Data Analyst
+            </span>
+          </h1>
+          <p class="text-xs text-slate-400">English Fluency, Storytelling & Interview Preparation</p>
+        </div>
+      </div>
+
+      <!-- Quick Action / Status Badges -->
+      <div class="flex items-center space-x-3">
+        <div class="hidden md:flex flex-col text-right">
+          <span class="text-[11px] text-slate-400 font-mono">Runway: 2–4 Months</span>
+          <span class="text-xs font-semibold text-emerald-400 flex items-center justify-end gap-1">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            Phase 1: Foundation Active
+          </span>
+        </div>
+        <a href="#homework" onclick="switchTab('homework')" class="px-3.5 py-1.5 rounded-lg text-xs font-medium bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 transition">
+          View Homework
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Profile Banner -->
+  <section class="bg-gradient-to-b from-slate-900 via-slate-900/60 to-slate-950 border-b border-slate-800/60 py-10">
+    <div class="container mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        <!-- Left 2 Cols: Profile & Goals -->
+        <div class="lg:col-span-2 space-y-4">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-medium">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            Personalized Learning Dashboard
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-tight">
+            Bridging Data Analytics & <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">Executive English</span>
+          </h2>
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl">
+            Welcome to your dedicated resource hub, Vlad. Here you will find structured lesson recaps, practical weekly homework, custom vocabulary upgrades, and an interactive cheat sheet built specifically for high-growth tech roles.
+          </p>
+
+          <!-- Focus Area Pills -->
+          <div class="pt-2 flex flex-wrap gap-2 text-xs">
+            <span class="px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/80 text-slate-300 flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path></svg>
+              Data Storytelling (What $\rightarrow$ So What $\rightarrow$ Now What)
+            </span>
+            <span class="px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/80 text-slate-300 flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"></path></svg>
+              Pronunciation & Tech Word Stress
+            </span>
+            <span class="px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/80 text-slate-300 flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+              STAR Method & Tech Interview Prep
+            </span>
+          </div>
+        </div>
+
+        <!-- Right 1 Col: Quick Reference Card -->
+        <div class="glass p-5 rounded-2xl border border-slate-800 flex flex-col justify-between space-y-4">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-mono uppercase text-slate-400">Student Profile Card</span>
+              <span class="px-2 py-0.5 text-[10px] font-semibold bg-blue-500/10 text-blue-400 border border-blue-500/20 rounded">Corporate Account</span>
+            </div>
+            <div class="space-y-2.5 text-xs">
+              <div class="flex justify-between pb-2 border-b border-slate-800">
+                <span class="text-slate-400">Current Role</span>
+                <span class="font-medium text-slate-200">Data Analyst (IT)</span>
+              </div>
+              <div class="flex justify-between pb-2 border-b border-slate-800">
+                <span class="text-slate-400">Target Role</span>
+                <span class="font-medium text-slate-200">Data Analyst / BI Engineer (Global)</span>
+              </div>
+              <div class="flex justify-between pb-2 border-b border-slate-800">
+                <span class="text-slate-400">Target Interview Window</span>
+                <span class="font-medium text-emerald-400">Q4 / Early Q1 (2–4 Months)</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-400">Class Cadence</span>
+                <span class="font-medium text-slate-200">2x Weekly Recommended</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-2">
+            <div class="w-full bg-slate-800 rounded-full h-2 mb-1.5 overflow-hidden">
+              <div class="bg-gradient-to-r from-emerald-500 to-teal-400 h-2 rounded-full w-[20%] transition-all duration-500"></div>
+            </div>
+            <div class="flex justify-between text-[11px] text-slate-400">
+              <span>Roadmap Progress</span>
+              <span class="font-mono text-emerald-400">Phase 1 (20%)</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Navigation Tabs Bar -->
+  <div class="sticky top-[73px] z-30 bg-slate-900/90 border-b border-slate-800 backdrop-blur-md">
+    <div class="container mx-auto px-4 sm:px-6">
+      <div class="flex overflow-x-auto no-scrollbar space-x-2 py-2.5" id="navTabs">
+        <button onclick="switchTab('notes')" id="btn-notes" class="tab-btn active px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition flex items-center gap-2 whitespace-nowrap">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+          Example Lesson Notes
+        </button>
+        <button onclick="switchTab('homework')" id="btn-homework" class="tab-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-medium text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 transition flex items-center gap-2 whitespace-nowrap">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+          Example Homework & Tasks
+        </button>
+        <button onclick="switchTab('roadmap')" id="btn-roadmap" class="tab-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-medium text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 transition flex items-center gap-2 whitespace-nowrap">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
+          3-Month Curriculum
+        </button>
+        <button onclick="switchTab('cheatsheet')" id="btn-cheatsheet" class="tab-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-medium text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 transition flex items-center gap-2 whitespace-nowrap">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+          Data English Cheat Sheet
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content Body -->
+  <main class="container mx-auto px-4 sm:px-6 py-8 flex-1 max-w-6xl">
+
+    <!-- ============================================================ -->
+    <!-- TAB 1: EXAMPLE LESSON NOTES -->
+    <!-- ============================================================ -->
+    <div id="tab-notes" class="tab-content space-y-8">
+      
+      <!-- Intro Banner -->
+      <div class="bg-slate-900/70 border border-slate-800 rounded-xl p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div>
+          <span class="text-xs font-mono text-emerald-400 uppercase tracking-wide">Live Documentation Sample</span>
+          <h3 class="text-lg font-bold text-white mt-0.5">How Lesson Notes Are Delivered</h3>
+          <p class="text-xs sm:text-sm text-slate-400 mt-1 max-w-2xl">
+            After every single class, you receive a clean, structured recap dividing your speech into actionable vocabulary upgrades, pronunciation gym drills, grammar polish, and key discussion points.
+          </p>
+        </div>
+        <div class="flex items-center gap-2 text-xs font-mono text-slate-400 bg-slate-950 px-3 py-2 rounded-lg border border-slate-800">
+          <span class="text-slate-500">Sample Date:</span>
+          <span class="text-slate-200">Session 01 • Trial & Diagnostic</span>
+        </div>
+      </div>
+
+      <!-- Live Note Card -->
+      <div class="glass rounded-2xl border border-slate-800 overflow-hidden shadow-2xl">
+        <!-- Card Header -->
+        <div class="bg-slate-900/90 px-6 py-4 border-b border-slate-800 flex flex-wrap items-center justify-between gap-3">
+          <div class="flex items-center space-x-3">
+            <span class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 font-mono text-xs flex items-center justify-center font-bold">#01</span>
+            <div>
+              <h4 class="text-base font-bold text-white">Needs Analysis & High-Impact Metric Pitching</h4>
+              <p class="text-xs text-slate-400">Focus: Explaining analytics to non-technical business partners & word stress</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-xs px-2.5 py-1 rounded bg-slate-800 text-slate-300 font-mono">50 Min Session</span>
+            <span class="text-xs px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Mastered</span>
+          </div>
+        </div>
+
+        <div class="p-6 space-y-8">
+          
+          <!-- Section 1: Vocabulary Upgrades -->
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <h5 class="text-sm font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                1. Real-Time Phrasing Upgrades (Casual &rarr; Executive)
+              </h5>
+              <span class="text-xs text-slate-400 font-mono">Captured live in class</span>
+            </div>
+            
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs sm:text-sm border-collapse">
+                <thead>
+                  <tr class="border-b border-slate-800 text-slate-400 font-mono text-xs">
+                    <th class="py-2.5 px-3">What You Said</th>
+                    <th class="py-2.5 px-3">Executive Upgrade</th>
+                    <th class="py-2.5 px-3">Why It Sounds Better</th>
+                    <th class="py-2.5 px-3 text-right">Quick Copy</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-800/60 font-sans">
+                  <tr class="hover:bg-slate-800/30 transition">
+                    <td class="py-3 px-3 text-red-400/90 font-mono text-xs line-through">"The graph shows user visits dropped by 10%."</td>
+                    <td class="py-3 px-3 font-semibold text-emerald-300">"We observed a 10% dip in user traffic over Q3."</td>
+                    <td class="py-3 px-3 text-slate-400 text-xs">Replaces basic "shows" with active observation and quarterly framing.</td>
+                    <td class="py-3 px-3 text-right">
+                      <button onclick="copyText(this, 'We observed a 10% dip in user traffic over Q3.')" class="px-2 py-1 text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 rounded border border-slate-700">Copy</button>
+                    </td>
+                  </tr>
+                  <tr class="hover:bg-slate-800/30 transition">
+                    <td class="py-3 px-3 text-red-400/90 font-mono text-xs line-through">"I am not searching now, but I going to in few months."</td>
+                    <td class="py-3 px-3 font-semibold text-emerald-300">"I'm not actively searching yet, but I plan to enter the market in a few months."</td>
+                    <td class="py-3 px-3 text-slate-400 text-xs">Uses natural industry idiom ("enter the market") and correct future intention.</td>
+                    <td class="py-3 px-3 text-right">
+                      <button onclick="copyText(this, 'I am not actively searching yet, but I plan to enter the market in a few months.')" class="px-2 py-1 text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 rounded border border-slate-700">Copy</button>
+                    </td>
+                  </tr>
+                  <tr class="hover:bg-slate-800/30 transition">
+                    <td class="py-3 px-3 text-red-400/90 font-mono text-xs line-through">"This is bad because we lose money."</td>
+                    <td class="py-3 px-3 font-semibold text-emerald-300">"This directly impacts checkout conversion and bottom-line revenue."</td>
+                    <td class="py-3 px-3 text-slate-400 text-xs">Connects technical metrics to commercial business impact.</td>
+                    <td class="py-3 px-3 text-right">
+                      <button onclick="copyText(this, 'This directly impacts checkout conversion and bottom-line revenue.')" class="px-2 py-1 text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 rounded border border-slate-700">Copy</button>
+                    </td>
+                  </tr>
+                  <tr class="hover:bg-slate-800/30 transition">
+                    <td class="py-3 px-3 text-red-400/90 font-mono text-xs line-through">"We need to fix the bug quickly."</td>
+                    <td class="py-3 px-3 font-semibold text-emerald-300">"I recommend prioritizing this patch to mitigate further customer friction."</td>
+                    <td class="py-3 px-3 text-slate-400 text-xs">High-level advisory language ideal for cross-functional meetings.</td>
+                    <td class="py-3 px-3 text-right">
+                      <button onclick="copyText(this, 'I recommend prioritizing this patch to mitigate further customer friction.')" class="px-2 py-1 text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 rounded border border-slate-700">Copy</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Section 2: Pronunciation & Stress Gym -->
+          <div class="pt-4 border-t border-slate-800">
+            <h5 class="text-sm font-bold uppercase tracking-wider text-teal-400 flex items-center gap-2 mb-3">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"></path></svg>
+              2. Pronunciation & Word Stress Gym
+            </h5>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <!-- Card 1 -->
+              <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800 relative">
+                <span class="text-[10px] font-mono text-amber-400 uppercase font-bold">Word Stress Rule #1</span>
+                <h6 class="text-sm font-bold text-white mt-1">The "Analyze" Family</h6>
+                <div class="mt-2 space-y-1.5 text-xs font-mono">
+                  <div class="p-1.5 rounded bg-slate-950 flex justify-between">
+                    <span>Verb:</span>
+                    <span class="text-emerald-400 font-bold"><span class="underline decoration-emerald-500">AN</span>-a-lyze</span>
+                  </div>
+                  <div class="p-1.5 rounded bg-slate-950 flex justify-between">
+                    <span>Noun:</span>
+                    <span class="text-cyan-400 font-bold">a-<span class="underline decoration-cyan-500">NAL</span>-y-sis</span>
+                  </div>
+                  <div class="p-1.5 rounded bg-slate-950 flex justify-between">
+                    <span>Adj:</span>
+                    <span class="text-teal-400 font-bold">an-a-<span class="underline decoration-teal-500">LYT</span>-i-cal</span>
+                  </div>
+                </div>
+                <p class="text-[11px] text-slate-400 mt-2">Notice how the primary stress shifts with each grammatical form!</p>
+              </div>
+
+              <!-- Card 2 -->
+              <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800">
+                <span class="text-[10px] font-mono text-teal-400 uppercase font-bold">Consonant Drill</span>
+                <h6 class="text-sm font-bold text-white mt-1">/w/ vs /v/ Sound</h6>
+                <div class="mt-2 space-y-1 text-xs text-slate-300">
+                  <p><strong class="text-emerald-400">/w/</strong>: Round lips like blowing a candle (never touch teeth).</p>
+                  <div class="p-2 rounded bg-slate-950 font-mono text-xs text-slate-300 mt-1">
+                    "We work with warehouse workflows."
+                  </div>
+                  <p class="text-[11px] text-slate-400 mt-2">Tip: Check the mirror. If top teeth touch the bottom lip, it will sound like /v/.</p>
+                </div>
+              </div>
+
+              <!-- Card 3 -->
+              <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800">
+                <span class="text-[10px] font-mono text-indigo-400 uppercase font-bold">Intonation & Flow</span>
+                <h6 class="text-sm font-bold text-white mt-1">Natural Fillers (No "E-e-e")</h6>
+                <div class="mt-2 space-y-1.5 text-xs">
+                  <div class="p-1.5 rounded bg-slate-950 text-slate-300">
+                    <span class="text-emerald-400 font-mono">"Looking at the figures..."</span>
+                  </div>
+                  <div class="p-1.5 rounded bg-slate-950 text-slate-300">
+                    <span class="text-emerald-400 font-mono">"Essentially, what happened is..."</span>
+                  </div>
+                  <div class="p-1.5 rounded bg-slate-950 text-slate-300">
+                    <span class="text-emerald-400 font-mono">"To put this into context..."</span>
+                  </div>
+                </div>
+                <p class="text-[11px] text-slate-400 mt-2">Use these natural transition phrases when you need 2 seconds to think!</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 3: Grammar & Syntax Polish -->
+          <div class="pt-4 border-t border-slate-800">
+            <h5 class="text-sm font-bold uppercase tracking-wider text-cyan-400 flex items-center gap-2 mb-3">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+              3. Grammar & Slavic L1 Transfer Polish
+            </h5>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+              <div class="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
+                <div class="flex items-center gap-2 text-slate-300 font-semibold mb-1">
+                  <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                  Articles with Technical Nouns
+                </div>
+                <p class="text-slate-400">In Russian, articles don't exist. In English, singular countable tech nouns need an article:</p>
+                <div class="mt-2 space-y-1 font-mono">
+                  <div class="text-red-400 line-through">"We launched dashboard yesterday."</div>
+                  <div class="text-emerald-400">"We launched <strong>a</strong> new dashboard yesterday."</div>
+                  <div class="text-emerald-400">"I pushed the fix to <strong>the</strong> production cluster."</div>
+                </div>
+              </div>
+
+              <div class="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
+                <div class="flex items-center gap-2 text-slate-300 font-semibold mb-1">
+                  <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+                  Future Intentions vs. Ongoing State
+                </div>
+                <p class="text-slate-400">Avoid "I going to" without the auxiliary verb:</p>
+                <div class="mt-2 space-y-1 font-mono">
+                  <div class="text-red-400 line-through">"I going to search in few months."</div>
+                  <div class="text-emerald-400">"I <strong>am planning to</strong> interview in a few months."</div>
+                  <div class="text-emerald-400">"I <strong>intend to</strong> start applying by November."</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- TAB 2: EXAMPLE HOMEWORK & TASKS -->
+    <!-- ============================================================ -->
+    <div id="tab-homework" class="tab-content hidden space-y-8">
+      
+      <div class="bg-slate-900/70 border border-slate-800 rounded-xl p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div>
+          <span class="text-xs font-mono text-emerald-400 uppercase tracking-wide">Weekly Practice Protocol</span>
+          <h3 class="text-lg font-bold text-white mt-0.5">Real-World Tech Homework Format</h3>
+          <p class="text-xs sm:text-sm text-slate-400 mt-1 max-w-2xl">
+            No dry grammar worksheets. Your homework consists of high-leverage micro-tasks: 90-second audio/video recordings, meeting simulations, and STAR interview drafts.
+          </p>
+        </div>
+        <div class="px-3 py-2 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-lg text-xs font-mono">
+          Submission: Via Preply / Telegram Voice Note
+        </div>
+      </div>
+
+      <!-- Active Homework Card -->
+      <div class="glass rounded-2xl border border-slate-800 p-6 space-y-6">
+        
+        <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800">
+          <div>
+            <span class="px-2.5 py-0.5 rounded text-[11px] font-mono font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20">
+              Active Assignment
+            </span>
+            <h4 class="text-base sm:text-lg font-bold text-white mt-2">
+              Assignment 1: The 90-Second Executive Voice Pitch
+            </h4>
+          </div>
+          <span class="text-xs font-mono text-slate-400">Estimated time: 15–20 minutes</span>
+        </div>
+
+        <!-- Task 1 -->
+        <div class="space-y-3">
+          <h5 class="text-sm font-semibold text-white flex items-center gap-2">
+            <span class="w-6 h-6 rounded-full bg-emerald-500 text-slate-950 font-bold text-xs flex items-center justify-center">1</span>
+            The Scenario & Data Prompt
+          </h5>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed pl-8">
+            Imagine you are in a Monday morning product sync with your Head of Product and Senior Engineering Manager. You are presenting the latest data insight:
+          </p>
+          <div class="ml-8 p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs font-mono text-slate-300 space-y-1">
+            <div class="text-emerald-400 font-bold">📊 The Metric Observation:</div>
+            <div>• Metric: Mobile onboarding completion rate dropped from 74% to 61% last week.</div>
+            <div>• Cause: Latency in the SMS two-factor authentication verification API.</div>
+            <div>• Recommendation: Switch to WhatsApp backup delivery or increase API timeout threshold.</div>
+          </div>
+        </div>
+
+        <!-- Task 2 -->
+        <div class="space-y-3">
+          <h5 class="text-sm font-semibold text-white flex items-center gap-2">
+            <span class="w-6 h-6 rounded-full bg-emerald-500 text-slate-950 font-bold text-xs flex items-center justify-center">2</span>
+            Your Objective
+          </h5>
+          <div class="ml-8 space-y-2 text-xs sm:text-sm text-slate-300">
+            <p>Record a <strong>60 to 90-second voice message</strong> (on Preply or Telegram) or a quick Loom video addressing the team. You must apply the 3-step formula:</p>
+            <ul class="list-disc list-inside space-y-1 text-slate-400 text-xs pl-2">
+              <li><strong class="text-slate-200">The What:</strong> Introduce the 13% drop-off clearly without rambling.</li>
+              <li><strong class="text-slate-200">The So What:</strong> Explain the business risk (user frustration, lower weekly active users).</li>
+              <li><strong class="text-slate-200">The Now What:</strong> Propose the engineering fix with confident advisory phrasing (*"I recommend...", "To mitigate this..."*).</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Task 3 -->
+        <div class="space-y-3">
+          <h5 class="text-sm font-semibold text-white flex items-center gap-2">
+            <span class="w-6 h-6 rounded-full bg-emerald-500 text-slate-950 font-bold text-xs flex items-center justify-center">3</span>
+            Pronunciation Checklist (Self-Audit Before Sending)
+          </h5>
+          <div class="ml-8 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+            <div class="p-3 bg-slate-900 rounded-lg border border-slate-800">
+              <span class="text-emerald-400 font-mono font-bold block mb-1">Check 1</span>
+              <span>Did you say <strong class="text-white font-mono">AN-a-lyze</strong> (verb) and <strong class="text-white font-mono">a-NAL-y-sis</strong> (noun) with correct syllable stress?</span>
+            </div>
+            <div class="p-3 bg-slate-900 rounded-lg border border-slate-800">
+              <span class="text-emerald-400 font-mono font-bold block mb-1">Check 2</span>
+              <span>Did you round your lips for <strong class="text-white font-mono">we</strong>, <strong class="text-white font-mono">work</strong>, and <strong class="text-white font-mono">warehouse</strong> without touching teeth?</span>
+            </div>
+            <div class="p-3 bg-slate-900 rounded-lg border border-slate-800">
+              <span class="text-emerald-400 font-mono font-bold block mb-1">Check 3</span>
+              <span>Did you eliminate "e-e-e" silence by using <strong class="text-white font-mono">"Looking at..."</strong> or <strong class="text-white font-mono">"Essentially..."</strong>?</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tutor Feedback Guarantee -->
+        <div class="p-4 rounded-xl bg-slate-900/90 border border-emerald-500/20 flex items-center justify-between">
+          <div class="flex items-center space-x-3">
+            <div class="w-9 h-9 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-sm font-bold">
+              ✓
+            </div>
+            <div>
+              <h6 class="text-xs font-bold text-white">Tutor Review SLA</h6>
+              <p class="text-[11px] text-slate-400">Audio/video submissions receive detailed timestamped voice feedback within 24 hours.</p>
+            </div>
+          </div>
+          <span class="text-xs font-mono text-emerald-400">Turnaround: &lt; 24h</span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- TAB 3: 3-MONTH CURRICULUM ROADMAP -->
+    <!-- ============================================================ -->
+    <div id="tab-roadmap" class="tab-content hidden space-y-8">
+      
+      <div class="bg-slate-900/70 border border-slate-800 rounded-xl p-5">
+        <span class="text-xs font-mono text-emerald-400 uppercase tracking-wide">Strategic Progression</span>
+        <h3 class="text-lg font-bold text-white mt-0.5">The 3-Month Flight Plan to an English-Speaking IT Role</h3>
+        <p class="text-xs sm:text-sm text-slate-400 mt-1 max-w-2xl">
+          By starting now—months before active interviewing—we eliminate panic and build effortless communication habits.
+        </p>
+      </div>
+
+      <!-- Roadmap Timeline -->
+      <div class="space-y-6">
+        
+        <!-- Phase 1 -->
+        <div class="relative pl-6 sm:pl-8 border-l-2 border-emerald-500 space-y-3">
+          <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-emerald-500 ring-4 ring-slate-950"></div>
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold">Phase 1 (Month 1)</span>
+              <h4 class="text-base font-bold text-white">Workplace Fluency & Executive Data Pitching</h4>
+            </div>
+            <span class="text-xs font-mono text-emerald-400">Current Phase • Foundation</span>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Eliminating hesitation, mastering daily standups, presenting dashboards with executive brevity, and fixing core Slavic pronunciation habits (stress, /w/ vs /v/, vowel lengths).
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 text-xs">
+            <div class="p-3 bg-slate-900 rounded-lg border border-slate-800">
+              <strong class="text-emerald-300 block mb-1">Key Modules:</strong>
+              <ul class="space-y-1 text-slate-400">
+                <li>• Standup precision: past, present, blockers formula</li>
+                <li>• Executive framing: What &rarr; So What &rarr; Now What</li>
+                <li>• Data storytelling with charts, trends, and anomalies</li>
+              </ul>
+            </div>
+            <div class="p-3 bg-slate-900 rounded-lg border border-slate-800">
+              <strong class="text-teal-300 block mb-1">Target Milestone:</strong>
+              <p class="text-slate-400">Deliver a 3-minute uninterrupted walkthrough of an analytical project with zero filler hesitations.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phase 2 -->
+        <div class="relative pl-6 sm:pl-8 border-l-2 border-slate-800 space-y-3">
+          <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-slate-700 ring-4 ring-slate-950"></div>
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-bold">Phase 2 (Month 2)</span>
+              <h4 class="text-base font-bold text-white">Behavioral Tech Interviews & The STAR Method</h4>
+            </div>
+            <span class="text-xs font-mono text-slate-500">Upcoming</span>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Constructing 6–8 rock-solid stories for international recruiters using Situation, Task, Action, Result. Tailoring answers for cross-functional conflict, ambiguous business requirements, and data quality failures.
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 text-xs">
+            <div class="p-3 bg-slate-900 rounded-lg border border-slate-800">
+              <strong class="text-slate-300 block mb-1">Key Modules:</strong>
+              <ul class="space-y-1 text-slate-400">
+                <li>• The 90-second "Tell me about yourself" Tech Elevator Pitch</li>
+                <li>• Handling behavioral challenges ("Tell me about conflicting stakeholder demands")</li>
+                <li>• Quantifying results: connecting SQL/Python pipelines to revenue</li>
+              </ul>
+            </div>
+            <div class="p-3 bg-slate-900 rounded-lg border border-slate-800">
+              <strong class="text-slate-300 block mb-1">Target Milestone:</strong>
+              <p class="text-slate-400">Personal interview story bank ready with polished delivery on all core behavioral competencies.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phase 3 -->
+        <div class="relative pl-6 sm:pl-8 border-l-2 border-slate-800 space-y-3">
+          <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-slate-700 ring-4 ring-slate-950"></div>
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-bold">Phase 3 (Month 3)</span>
+              <h4 class="text-base font-bold text-white">Full Live Mock Interviews & Offer Negotiation</h4>
+            </div>
+            <span class="text-xs font-mono text-slate-500">Pre-Interview Launch</span>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Simulated 45-minute technical recruiter and hiring manager interviews. Thinking out loud during SQL/analytics case questions, asking smart questions to the interviewer, and offer negotiation tactics.
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 text-xs">
+            <div class="p-3 bg-slate-900 rounded-lg border border-slate-800">
+              <strong class="text-slate-300 block mb-1">Key Modules:</strong>
+              <ul class="space-y-1 text-slate-400">
+                <li>• Live simulation with recorded video review and scoring</li>
+                <li>• "Thinking out loud" during technical data tasks & schema design</li>
+                <li>• Salary negotiation scripts for international remote contracts</li>
+              </ul>
+            </div>
+            <div class="p-3 bg-slate-900 rounded-lg border border-slate-800">
+              <strong class="text-slate-300 block mb-1">Target Milestone:</strong>
+              <p class="text-slate-400">100% confidence entering international tech recruiter screenings.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- TAB 4: DATA ANALYST ENGLISH CHEAT SHEET -->
+    <!-- ============================================================ -->
+    <div id="tab-cheatsheet" class="tab-content hidden space-y-8">
+      
+      <div class="bg-slate-900/70 border border-slate-800 rounded-xl p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div>
+          <span class="text-xs font-mono text-emerald-400 uppercase tracking-wide">Workplace Reference Tool</span>
+          <h3 class="text-lg font-bold text-white mt-0.5">Data Analytics English Cheat Sheet</h3>
+          <p class="text-xs sm:text-sm text-slate-400 mt-1 max-w-2xl">
+            Click any phrase to copy it directly into your clipboard for immediate use in Slack, standup meetings, or executive emails.
+          </p>
+        </div>
+      </div>
+
+      <!-- Categories -->
+      <div class="space-y-6">
+
+        <!-- Category 1: Describing Metric Changes -->
+        <div class="glass rounded-2xl border border-slate-800 p-5 space-y-4">
+          <div class="flex items-center justify-between">
+            <h4 class="text-sm font-bold text-emerald-300 flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded bg-emerald-400"></span>
+              Describing Metric Trends & Trajectories
+            </h4>
+            <span class="text-[11px] font-mono text-slate-400">6 High-Impact Verbs</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
+            
+            <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800 flex flex-col justify-between hover:border-slate-700 transition">
+              <div>
+                <span class="font-bold text-white font-mono text-sm">Plateau</span>
+                <p class="text-slate-400 mt-1 text-[11px]">"Sign-ups have <strong>plateaued</strong> around 5,000 weekly active users."</p>
+              </div>
+              <button onclick="copyText(this, 'Sign-ups have plateaued around 5,000 weekly active users.')" class="mt-2.5 w-full py-1 text-[11px] bg-slate-800 hover:bg-slate-700 text-slate-300 rounded">Copy Sentence</button>
+            </div>
+
+            <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800 flex flex-col justify-between hover:border-slate-700 transition">
+              <div>
+                <span class="font-bold text-white font-mono text-sm">Outpace</span>
+                <p class="text-slate-400 mt-1 text-[11px]">"Mobile conversion has consistently <strong>outpaced</strong> desktop performance."</p>
+              </div>
+              <button onclick="copyText(this, 'Mobile conversion has consistently outpaced desktop performance.')" class="mt-2.5 w-full py-1 text-[11px] bg-slate-800 hover:bg-slate-700 text-slate-300 rounded">Copy Sentence</button>
+            </div>
+
+            <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800 flex flex-col justify-between hover:border-slate-700 transition">
+              <div>
+                <span class="font-bold text-white font-mono text-sm">Skew</span>
+                <p class="text-slate-400 mt-1 text-[11px]">"A small cluster of power users is heavily <strong>skewing</strong> the average session duration."</p>
+              </div>
+              <button onclick="copyText(this, 'A small cluster of power users is heavily skewing the average session duration.')" class="mt-2.5 w-full py-1 text-[11px] bg-slate-800 hover:bg-slate-700 text-slate-300 rounded">Copy Sentence</button>
+            </div>
+
+            <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800 flex flex-col justify-between hover:border-slate-700 transition">
+              <div>
+                <span class="font-bold text-white font-mono text-sm">Correlate</span>
+                <p class="text-slate-400 mt-1 text-[11px]">"Page latency strongly <strong>correlates with</strong> cart abandonment."</p>
+              </div>
+              <button onclick="copyText(this, 'Page latency strongly correlates with cart abandonment.')" class="mt-2.5 w-full py-1 text-[11px] bg-slate-800 hover:bg-slate-700 text-slate-300 rounded">Copy Sentence</button>
+            </div>
+
+            <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800 flex flex-col justify-between hover:border-slate-700 transition">
+              <div>
+                <span class="font-bold text-white font-mono text-sm">Mitigate</span>
+                <p class="text-slate-400 mt-1 text-[11px]">"We deployed an indexing patch to <strong>mitigate</strong> server timeouts."</p>
+              </div>
+              <button onclick="copyText(this, 'We deployed an indexing patch to mitigate server timeouts.')" class="mt-2.5 w-full py-1 text-[11px] bg-slate-800 hover:bg-slate-700 text-slate-300 rounded">Copy Sentence</button>
+            </div>
+
+            <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800 flex flex-col justify-between hover:border-slate-700 transition">
+              <div>
+                <span class="font-bold text-white font-mono text-sm">Drill Down</span>
+                <p class="text-slate-400 mt-1 text-[11px]">"Let's <strong>drill down into</strong> the cohort data by geographic region."</p>
+              </div>
+              <button onclick="copyText(this, 'Let us drill down into the cohort data by geographic region.')" class="mt-2.5 w-full py-1 text-[11px] bg-slate-800 hover:bg-slate-700 text-slate-300 rounded">Copy Sentence</button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Category 2: Daily Standup Formula -->
+        <div class="glass rounded-2xl border border-slate-800 p-5 space-y-4">
+          <div class="flex items-center justify-between">
+            <h4 class="text-sm font-bold text-cyan-300 flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded bg-cyan-400"></span>
+              The 3-Sentence Agile Standup Formula
+            </h4>
+            <span class="text-[11px] font-mono text-slate-400">Scrum Fluency</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+            <div class="p-3.5 bg-slate-900/90 rounded-xl border border-slate-800 space-y-2">
+              <span class="text-emerald-400 font-mono font-bold block">1. What I accomplished</span>
+              <p class="text-slate-300">"Yesterday I finalized the cohort retention query in Snowflake and validated the data integrity."</p>
+              <button onclick="copyText(this, 'Yesterday I finalized the cohort retention query in Snowflake and validated the data integrity.')" class="w-full py-1 text-[11px] bg-slate-800 hover:bg-slate-700 text-slate-300 rounded">Copy</button>
+            </div>
+
+            <div class="p-3.5 bg-slate-900/90 rounded-xl border border-slate-800 space-y-2">
+              <span class="text-teal-400 font-mono font-bold block">2. What I'm focusing on today</span>
+              <p class="text-slate-300">"Today my main priority is shipping the revised executive dashboard for the marketing team."</p>
+              <button onclick="copyText(this, 'Today my main priority is shipping the revised executive dashboard for the marketing team.')" class="w-full py-1 text-[11px] bg-slate-800 hover:bg-slate-700 text-slate-300 rounded">Copy</button>
+            </div>
+
+            <div class="p-3.5 bg-slate-900/90 rounded-xl border border-slate-800 space-y-2">
+              <span class="text-amber-400 font-mono font-bold block">3. Blockers & Dependencies</span>
+              <p class="text-slate-300">"I have no hard blockers, but I'm waiting on API schema approval from the backend team."</p>
+              <button onclick="copyText(this, 'I have no hard blockers, but I am waiting on API schema approval from the backend team.')" class="w-full py-1 text-[11px] bg-slate-800 hover:bg-slate-700 text-slate-300 rounded">Copy</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Toast Notification for Copy -->
+  <div id="toast" class="fixed bottom-6 right-6 bg-emerald-500 text-slate-950 px-4 py-2 rounded-xl font-semibold text-xs shadow-2xl flex items-center gap-2 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none z-50">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+    <span>Copied to clipboard!</span>
+  </div>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800/80 bg-slate-950 py-8 text-center text-xs text-slate-500">
+    <div class="container mx-auto px-4 space-y-2">
+      <p>Vlad's English for Tech Learning Portal • Hosted on GitHub Pages</p>
+      <p class="text-[11px] text-slate-600 font-mono">Curated by Lewis O. • Preply Corporate Learning Partnership</p>
+    </div>
+  </footer>
+
+  <script>
+    function switchTab(tabId) {
+      // Hide all contents
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      // Remove active from all buttons
+      document.querySelectorAll('.tab-btn').forEach(el => {
+        el.classList.remove('active', 'bg-emerald-500', 'text-white');
+        el.classList.add('text-slate-400');
+      });
+
+      // Show target tab
+      const targetContent = document.getElementById('tab-' + tabId);
+      if (targetContent) {
+        targetContent.classList.remove('hidden');
+      }
+
+      // Set active button
+      const targetBtn = document.getElementById('btn-' + tabId);
+      if (targetBtn) {
+        targetBtn.classList.add('active', 'bg-emerald-500', 'text-white');
+        targetBtn.classList.remove('text-slate-400');
+      }
+    }
+
+    function copyText(btn, text) {
+      navigator.clipboard.writeText(text).then(() => {
+        const originalText = btn.innerText;
+        btn.innerText = 'Copied!';
+        btn.classList.add('bg-emerald-600', 'text-white');
+        
+        // Show Toast
+        const toast = document.getElementById('toast');
+        toast.classList.remove('translate-y-20', 'opacity-0');
+        
+        setTimeout(() => {
+          btn.innerText = originalText;
+          btn.classList.remove('bg-emerald-600', 'text-white');
+          toast.classList.add('translate-y-20', 'opacity-0');
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>
