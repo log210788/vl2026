@@ -26,23 +26,28 @@ To publish this portal live on the web for V. T.:
 
 ## 📂 Portal Contents & Features
 
-- **Personalized Student Dashboard:** Tracks V. T.'s role, corporate sponsorship, target roles, and 3-month preparation timeline.
-- **Example Lesson Notes:**
+- **Clean Student Learning Hub (Default Landing Page):**
+  - Instant 1-click launchpad directly routing V. T. to active homework, latest lesson notes, cheat sheet, and roadmap.
+  - Welcome status banner with phase progress and next session highlights.
+  - Week-by-week syllabus organized chronologically from **Week 1 through Week 12**.
+  - Pronunciation gym & standup anchor spotlights.
+- **Weekly Lesson Notes (Week 1 Active):**
   - Real-time vocabulary upgrades ("What You Said" vs. "Executive Upgrade" vs. "Why it sounds better").
-  - Pronunciation gym with syllable stress guides (`AN-a-lyze` vs `a-NAL-y-sis` vs `an-a-LYT-i-cal`).
-  - Grammar & Slavic L1 Polish (e.g. articles with technical nouns, future intent phrasing).
-- **Example Homework & Assignments:**
-  - **1-Click PDF Download & Print:** Built-in PDF export (`html2pdf`) and print engine for easy submission via Preply chat.
-  - **Multiple Choice Exercise:** Comparing direct/blunt options against indirect, diplomatic email phrasing with annotated rationale.
-  - **Email Rewrite Exercise (Pre-Filled Exemplar):** Transforming raw, accusatory bug reports into constructive, executive-level technical communication with tutor grading (10/10) and rubric annotations.
-  - **Spoken Practice:** 90-second executive voice pitch simulation (What &rarr; So What &rarr; Now What) with pronunciation checklist.
-- **3-Month Curriculum Roadmap:**
-  - **Phase 1 (Month 1):** Workplace Fluency & Executive Data Pitching.
-  - **Phase 2 (Month 2):** Tech Behavioral Interview Prep (STAR Method).
-  - **Phase 3 (Month 3):** Full Live Mock Interviews & Offer Negotiation.
-- **Data Analytics English Cheat Sheet ("Additional Notes"):**
+  - Syllable stress guides (`AN-a-lyze` vs `a-NAL-y-sis` vs `an-a-LYT-i-cal`).
+  - Slavic L1 polish (articles with technical nouns, future intent syntax).
+  - Quick week switcher for navigating past and future lesson archives.
+- **Week 1 Homework & Practice (HW-01):**
+  - **1-Click PDF Download & Print:** Client-side PDF export (`html2pdf.js`) and clean print styles for Preply chat submissions.
+  - **Multiple Choice Exercise:** Diplomatic & indirect phrasing analysis with annotated rationale.
+  - **Email Rewrite Exercise (Pre-Filled Exemplar):** Turning raw bug reports into constructive, executive communication with rubric annotations.
+  - **Spoken Practice:** 90-second executive voice pitch simulation (What &rarr; So What &rarr; Now What).
+- **12-Week Curriculum Roadmap:**
+  - **Phase 1 (Weeks 1–4):** Workplace Fluency & Executive Data Pitching.
+  - **Phase 2 (Weeks 5–8):** Tech Behavioral Interview Prep (STAR Method).
+  - **Phase 3 (Weeks 9–12):** Simulated Mock Interviews & Offer Negotiation.
+- **Data Analytics English Cheat Sheet:**
   - High-impact data verbs (`plateau`, `outpace`, `skew`, `correlate`, `mitigate`, `drill down`).
-  - Agile/Scrum 3-sentence daily standup formula.
+  - Agile/Scrum 3-sentence daily standup formula with live filter search.
   - 1-click **Copy to Clipboard** with interactive toast notifications.
 
 ---
