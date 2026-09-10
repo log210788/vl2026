@@ -42,7 +42,7 @@ To publish this portal live on the web for V. T.:
   - **Email Rewrite Exercise (Pre-Filled Exemplar):** Turning raw bug reports into constructive, executive communication with rubric annotations.
   - **Spoken Practice:** 90-second executive voice pitch simulation (What &rarr; So What &rarr; Now What).
 - **12-Week Curriculum Roadmap (4 Sequential Phases + 2 Longitudinal Pillars):**
-  - **Continuous Longitudinal Core (Every Session):** Spontaneous Social Talking / Small Talk Warm-up (10m) + Active Vocabulary & Tech Idioms.
+  - **Continuous Longitudinal Core (Every Session):** Dedicated Spontaneous Social Talking & Fluency + Active Vocabulary & Tech Idioms.
   - **Phase 1 (Weeks 1–3):** Speech Rhythm, Thought Chunking & Spoken Cadence (Retraining Slavic syllable-timed rhythm into English stress-timed musicality).
   - **Phase 2 (Weeks 4–6):** Tech Behavioral Interview Prep & STAR Story Bank (90s elevator pitch & 6–8 quantified project stories).
   - **Phase 3 (Weeks 7–9):** Simulated Mock Interviews & Live Probing (45-min recruiter screen & lead data scientist technical rounds).
