@@ -1,7 +1,7 @@
-# Vlad Tikhonov | English for Tech & Data Analytics Student Portal
+# V. T. | English for Tech & Data Analytics Student Portal
 
 > **Live GitHub Pages Portal:** [https://log210788.github.io/vl2026/](https://log210788.github.io/vl2026/)  
-> **Student:** Vlad (IT Data Analyst)  
+> **Student:** V. T. (IT Data Analyst)  
 > **Tutor:** Lewis O. (Corporate English & Interview Specialist)  
 > **Track:** Workplace Fluency, Executive Data Storytelling, and Global Tech Interview Prep  
 
@@ -9,7 +9,7 @@
 
 ## 🚀 How to Enable GitHub Pages (One-Time Setup)
 
-To publish this portal live on the web for Vlad:
+To publish this portal live on the web for V. T.:
 
 1. Go to your repository settings on GitHub:  
    👉 **[https://github.com/log210788/vl2026/settings/pages](https://github.com/log210788/vl2026/settings/pages)**
@@ -26,7 +26,7 @@ To publish this portal live on the web for Vlad:
 
 ## 📂 Portal Contents & Features
 
-- **Personalized Student Dashboard:** Tracks Vlad's role, corporate sponsorship, target roles, and 3-month preparation timeline.
+- **Personalized Student Dashboard:** Tracks V. T.'s role, corporate sponsorship, target roles, and 3-month preparation timeline.
 - **Example Lesson Notes:**
   - Real-time vocabulary upgrades ("What You Said" vs. "Executive Upgrade" vs. "Why it sounds better").
   - Pronunciation gym with syllable stress guides (`AN-a-lyze` vs `a-NAL-y-sis` vs `an-a-LYT-i-cal`).
